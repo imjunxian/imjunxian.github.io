@@ -17,7 +17,7 @@ The website is created with HTML, CSS, JavaScript and [Bootstrap](https://getboo
 
 ## Links
 
-- Live Site URL : [Lee_Jun_Xian()]()
+- Live Site URL : [Lee_Jun_Xian()](https://imjunxian.github.io/)
 - Respository URL : [imjunxian.github.io](https://github.com/imjunxian/imjunxian.github.io)
 
 ## Author
