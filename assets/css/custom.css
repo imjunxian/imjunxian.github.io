@@ -217,7 +217,7 @@ main.hero-wrap {
 }
 @media (max-width: 500px) {
   main.mainhead {
-    padding-top: 2.5rem;
+    padding-top: 2rem;
   }
   #typing-block{
     min-height: 160px;
