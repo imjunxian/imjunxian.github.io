@@ -222,7 +222,7 @@ main.hero-wrap {
 }
 @media (max-width: 500px) {
   main.mainhead {
-    padding-top: 2.5rem;
+    padding-top: 2rem;
   }
   main.hero-wrap {
     min-height: 90vh;
