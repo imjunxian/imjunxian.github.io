@@ -438,14 +438,9 @@ span.cursor.typing {
   left: 50%;
   width: 100%;
   height: 100%;
+  margin: -20px 0 0 -71px;
   background-color: #ffffff;
   filter: contrast(20);
-}
-
-@media (max-width:500px){
-  .loading{
-    margin: -20px 0 0 -71px;
-  }
 }
 
 .point{
