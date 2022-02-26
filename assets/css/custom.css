@@ -171,7 +171,6 @@ img::-moz-selection {
 }
 
 main.mainhead {
-  padding-top: 4rem;
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -185,6 +184,12 @@ main.hero-wrap {
   position: inherit;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  main.mainhead {
+    padding-top: 4rem;
+  }
 }
 
 @media (max-width: 998px) {
@@ -209,7 +214,7 @@ main.hero-wrap {
   #heading-main {
     font-size: 3.0rem;
   }
-  main.mainhead {
+  .mainhead {
     padding-top: 3.5rem;
   }
 }
