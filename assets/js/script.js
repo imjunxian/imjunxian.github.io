@@ -51,16 +51,6 @@ function topFunction() {
     $('html, body').animate({ scrollTop: 0 }, 150);
 }
 
-//loader while loading
-document.onreadystatechange = function () {
-    if (document.readyState !== "complete") {
-        document.querySelector("body").style.visibility = "hidden";
-        document.querySelector("#loading").style.visibility = "visible";
-    } else {
-        document.querySelector("#loading").style.display = "none";
-        document.querySelector("body").style.visibility = "visible";
-    }
-};
 
 //Filter Portfolio Category
 var portfolioFilter = function () {
