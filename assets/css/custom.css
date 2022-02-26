@@ -214,12 +214,9 @@ main.hero-wrap {
   #heading-main {
     font-size: 3.0rem;
   }
-  .mainhead {
-    padding-top: 3.5rem;
-  }
 }
 @media (max-width: 500px) {
-  .mainhead {
+  main.mainhead {
     padding-top: 3rem;
   }
   #typing-block{
