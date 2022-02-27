@@ -224,9 +224,7 @@ main.hero-wrap {
   main.mainhead {
     padding-top: 2rem;
   }
-  main.hero-wrap {
-    min-height: 90vh;
-  }
+
   #typing-block{
     min-height: 160px;
   }
