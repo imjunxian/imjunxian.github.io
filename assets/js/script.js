@@ -18,20 +18,21 @@ window.addEventListener('scroll', (e) => {
 });
 
 //Hamburger (responsive navbar)
-const hamburger = document.querySelector(".hamburger-button");
+const hamburgerBtn = document.querySelector(".hamburger-button")
+const hamburgerIcon = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".navbar-nav");
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
+hamburgerBtn.addEventListener("click", () => {
+    hamburgerIcon.classList.toggle("active");
     navMenu.classList.toggle("active");
 });
 //Click on dropdown navigation
 document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
-    hamburger.classList.remove("active");
+    hamburgerIcon.classList.remove("active");
     navMenu.classList.remove("active");
 }));
 //Click on logo
 document.querySelectorAll(".navbar-brand").forEach(n => n.addEventListener("click", () => {
-    hamburger.classList.remove("active");
+    hamburgerIcon.classList.remove("active");
     navMenu.classList.remove("active");
 }));
 
