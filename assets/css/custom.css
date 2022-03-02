@@ -314,8 +314,8 @@ main.hero-wrap {
 #scrollBtn {
   display: none;
   position: fixed;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   bottom: 10px;
   right: 20px;
   line-height: 36px;
@@ -332,10 +332,6 @@ main.hero-wrap {
 
 #scrollBtn:hover {
   opacity: 0.6;
-}
-
-.dateText{
-  font-size: 16px;
 }
 
 /*Resume*/
