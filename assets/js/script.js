@@ -17,6 +17,17 @@ window.addEventListener('scroll', (e) => {
     }
 });
 
+//Resume padding issue in responsive view
+$(window).on('resize load', function () {
+    if ($(window).width() <= 998) {
+        $("#resumeDiv").removeClass("p-4");
+        $("#resumeDiv").addClass("pr-4");
+    } else {
+        $("#resumeDiv").removeClass("pr-4");
+        $("#resumeDiv").addClass("p-4");
+    }
+});
+
 //Hamburger (responsive navbar)
 const hamburgerBtn = document.querySelector(".hamburger-button")
 const hamburger = document.querySelector(".hamburger");
