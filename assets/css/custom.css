@@ -50,18 +50,6 @@ p {
   }
 }
 
-::-moz-selection {
-  background: var(--dark);
-  text-shadow: none;
-  color: #fff;
-}
-
-::selection {
-  background: var(--dark);
-  text-shadow: none;
-  color: #fff;
-}
-
 img::-moz-selection {
   background: transparent;
 }
@@ -625,54 +613,6 @@ section#contact :-ms-input-placeholder {
 .sr-icons:hover {
   transform: scale(1.15);
 }
-
-/*Pagination*/
-/*.pagination{
-  text-align: center;
-  margin: 20px 20px 50px;
-  user-select: none;
-}
-
-.pagination li{
-  display: inline-block;
-  margin: 5px;
-  box-shadow: 0 5px 25px rgb(1 1 1 / 9%);
-}
-
-.pagination li a{
-  color: #fff;
-  text-decoration: none;
-  font-size: 1em;
-  line-height: 30px;
-}
-
-.previous-page, .next-page{
-  background: #0AB1CE;
-  width: 80px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.previous-page:hover{
-  transform: translateX(-5px);
-}
-
-.next-page:hover{
-  transform: translateX(5px);
-}
-
-.current-page, .dots{
-  background: #ccc;
-  width: 45px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.disable{
-  background: #ccc;
-}*/
-/*Pagination End*/
 
 ::-webkit-scrollbar-track{
 	border: 5px solid white;
