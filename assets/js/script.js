@@ -87,7 +87,7 @@ var portfolioFilter = function () {
         setTimeout(function () { grid.isotope('layout') }, 300);
     });
 };
-$(function () {
+$(window).on('load', function () {
     portfolioFilter();
 });
 
