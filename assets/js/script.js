@@ -84,7 +84,6 @@ var portfolioFilter = function () {
         $grid.isotope({
             filter: data,
         });
-        setTimeout(function () { grid.isotope('layout') }, 300);
     });
 };
 $(window).on('load', function () {
