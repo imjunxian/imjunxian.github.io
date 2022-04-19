@@ -6514,6 +6514,11 @@ a.badge:focus {
     background-color: #dc3545;
 }
 
+.badge-laravel {
+    color: #fff;
+    background-color: #F05340;
+}
+
 body.modal-open-noscroll {
     margin-right: 0 !important;
     overflow: hidden;
