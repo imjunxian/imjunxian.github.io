@@ -6328,9 +6328,9 @@ a.text-dark:focus {
         text-decoration: underline;
     }
 
-    abbr[title]::after {
+    /*abbr[title]::after {
         content: " ("attr(title) ")";
-    }
+    }*/
 
     pre {
         white-space: pre-wrap !important;
@@ -6517,6 +6517,11 @@ a.badge:focus {
 .badge-laravel {
     color: #fff;
     background-color: #F05340;
+}
+
+.badge-vite {
+    color: #fff;
+    background-color: #B23CFD;
 }
 
 body.modal-open-noscroll {
