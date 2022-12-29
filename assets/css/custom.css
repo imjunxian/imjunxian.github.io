@@ -702,3 +702,94 @@ section#contact :-ms-input-placeholder {
     margin-right: auto;
   }
 }
+
+.badge-primary {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.badge-stripe {
+  color: #fff;
+  background-color: #6B71E3;
+}
+
+.badge-bootstrap {
+  color: #fff;
+  background-color: #563d7c;
+}
+
+.badge-kotlin {
+  color: #fff;
+  background-color: #B75EA4;
+
+}
+
+.badge-java {
+  color: #fff;
+  background-color: #ed1d25;
+}
+
+.badge-dark {
+  color: #fff;
+  background-color: #343a40;
+}
+
+.badge-php {
+  color: #fff;
+  background-color: #8892bf;
+}
+
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+
+.badge-info {
+  color: #fff;
+  background-color: #17a2b8;
+}
+
+.badge-warning {
+  color: #1f2d3d;
+  background-color: #ffc107;
+}
+
+.badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+
+.badge-laravel {
+  color: #fff;
+  background-color: #F05340;
+}
+
+.badge-vite {
+  color: #fff;
+  background-color: #B23CFD;
+}
+
+body.modal-open-noscroll {
+  margin-right: 0 !important;
+  overflow: hidden;
+}
+
+.modal-open-noscroll .navbar-fixed-top,
+.modal-open .navbar-fixed-bottom {
+  margin-right: 0 !important;
+}
+
+body.modal-open-noscroll {
+  margin-right: 0 !important;
+  overflow: hidden;
+}
+
+.modal-open-noscroll .navbar-default,
+.modal-open .navbar-default {
+  margin-right: 0 !important;
+}
