@@ -2598,71 +2598,13 @@ button.bg-primary:focus {
     background-color: #fec503 !important;
 }
 
-
-.flamingo-pink {
-    color: #f78fb3
-}
-
 .bg-gray {
     background-color: #dfe3ee;
 }
 
-.bg-blue-gray {
-    background-color: #f7f7f7;
-}
-
-.bg-pink-blue {
-    background-color: #FFC7EB;
-}
-
-.bg-light-blue-gradient {
-    background-color: #C7E0FF;
-    background-image: linear-gradient(45deg, #C7E0FF 18%, #C7E0FF 100%);
-}
-
-.bg-lavender {
-    background-color: #ffe8fe;
-    background-image: linear-gradient(225deg, #ffe8fe 18%, #dad6ff 100%);
-
-}
-
-.bg-pink3 {
-    background-color: #ffacd6;
-    background-image: linear-gradient(45deg, #ffacd6 18%, #f2e0ff 100%);
-}
-
-.bg-pink4 {
-    background-color: #fcc5d5;
-    background-image: linear-gradient(45deg, #fcc5d5 18%, #fff1e5 100%);
-
-}
-
-.bg-yellow {
-    background-color: #f4f1b8;
-    background-image: linear-gradient(45deg, #f4f1b8 18%, #ffdd90 100%);
-
-}
-
-.bg-blue4 {
-    background-color: #bed8ff;
-    background-image: linear-gradient(45deg, #bed8ff 0%, #e5f6ff 100%);
-
-}
-
-.bg-pink {
-    background-color: #FE91CA;
-}
-
-.bg-light-blue {
-    background-color: #C7E0FF;
-}
-
-
 .bg-light {
     background-color: #f8f9fa !important;
 }
-
-
 
 .rounded-lg {
     border-radius: 0.3rem !important;
