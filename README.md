@@ -1,6 +1,6 @@
 # imjunxian.github.io
 
-Hi There! I'm Lee Jun Xian, a.k.a. JaX and this is my personal website.
+What's up! I'm Lee Jun Xian and this is my portfolio website.
 The website is created with HTML, CSS, JavaScript and [Bootstrap](https://getbootstrap.com/).
 
 ##### Fonts
