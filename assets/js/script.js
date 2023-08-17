@@ -75,6 +75,12 @@ var portfolioFilter = function () {
                 columnWidth: ".portfolio-card",
             },
         });
+
+        // Default filter
+        var defaultFilter = ".coding";
+        $grid.isotope({
+            filter: defaultFilter,
+        });
     };
     $('.filters ul li').click(function () {
         $('.filters ul li').removeClass('active');
