@@ -20,11 +20,11 @@ window.addEventListener('scroll', (e) => {
 //Resume padding issue in responsive view
 $(window).on('resize load', function () {
     if ($(window).width() <= 998) {
-        $("#resumeDiv").removeClass("p-4");
-        $("#resumeDiv").addClass("pr-4");
+        $("#resumeDiv").removeClass("p-3");
+        $("#resumeDiv").addClass("pr-3");
     } else {
-        $("#resumeDiv").removeClass("pr-4");
-        $("#resumeDiv").addClass("p-4");
+        $("#resumeDiv").removeClass("pr-3");
+        $("#resumeDiv").addClass("p-3");
     }
 });
 

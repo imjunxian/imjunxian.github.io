@@ -774,6 +774,16 @@ section#contact :-ms-input-placeholder {
   background-color: #B23CFD;
 }
 
+.badge-oracle {
+  color: #fff;
+  background-color: #F80102;
+}
+
+.badge-vue {
+  color: #fff;
+  background-color: #42b883;
+}
+
 body.modal-open-noscroll {
   margin-right: 0 !important;
   overflow: hidden;
