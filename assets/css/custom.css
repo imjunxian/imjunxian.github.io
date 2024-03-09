@@ -1,9 +1,13 @@
 /*Custom CSS*/
+:root {
+  --font-family-1: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-2: "JetBrains Mono";
+}
 
 body {
   overflow-x: hidden;
   margin: 0;
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--font-family-1);
   font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.5;
@@ -79,7 +83,7 @@ img::-moz-selection {
 }
 
 #navBar-main .navbar-brand {
-  font-family: "JetBrains Mono";
+  font-family: var(--font-family-2);
   font-weight: 700;
   letter-spacing: 0.05em;
 }
@@ -150,7 +154,7 @@ img::-moz-selection {
   text-align: center;
   margin-top: 4%;
   margin-bottom: 15px;
-  font-family: 'JetBrains Mono';
+  font-family: var(--font-family-2);
 }
 
 #heading-text {
@@ -158,7 +162,7 @@ img::-moz-selection {
   font-size: 1.3rem;
   margin-top: 2%;
   margin-bottom: 10%;
-  font-family: 'JetBrains Mono';
+  font-family: var(--font-family-2);
 }
 
 #typing-block {
@@ -279,10 +283,9 @@ main.hero-wrap {
   font-weight: 500px;
 }
 
-.vport .viewPortfolio:before,
-.vport .viewPortfolio:after {
+.vport .viewPortfolio::before,
+.vport .viewPortfolio::after {
   position: absolute;
-  content: "My Portfolio";
   height: 55px;
   width: 180px;
   display: flex;
@@ -293,10 +296,15 @@ main.hero-wrap {
   border-radius: 3px;
 }
 
-.vport .viewPortfolio:before {
+.vport .viewPortfolio::before {
+  content: "My Portfolio";
   color: #fff;
   background: #343a40;
   transform: rotateY(0deg) translateZ(25px);
+}
+
+.vport .viewPortfolio::after {
+  content: "Let's Go !!!";
 }
 
 .vport .viewPortfolio:after {
@@ -539,13 +547,13 @@ li.timeline-item::before:hover {
 
 #portfolio .portfolio-item .portfolio-caption .portfolio-caption-heading {
   font-size: 1.5rem;
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--font-family-1);
   font-weight: 700;
   margin-bottom: 0;
 }
 
 #portfolio .portfolio-item .portfolio-caption .portfolio-caption-subheading {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--font-family-1);
 }
 
 .filters {
