@@ -10,7 +10,7 @@ $(".js-scroll-trigger").click(function () {
 //scroll and navbar shadow appear
 window.addEventListener('scroll', (e) => {
     const nav = document.querySelector('#navBar-main');
-    if (window.pageYOffset > 0) {
+    if (window.scrollY > 0) {
         nav.classList.add("shadow-sm");
     } else {
         nav.classList.remove("shadow-sm");
@@ -121,6 +121,33 @@ $(document).ready(function () {
     $('.modal').on('hide.bs.modal', function () {
         $('body').removeClass("modal-open-noscroll");
     });
+});
+
+// Duration in experience & education
+var dateElements = document.querySelectorAll('.dateText');
+
+dateElements.forEach(function(dateElement) {
+    var dateRange = dateElement.textContent.split('-');
+    var startDateText = dateRange[0].trim();
+    var endDateText = dateRange[1] ? dateRange[1].trim() : 'Present';
+    var startDate = new Date(startDateText);
+    var endDate = endDateText === 'Present' ? new Date() : new Date(endDateText);
+
+    var durationInMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12;
+    durationInMonths -= startDate.getMonth() + 1;
+    durationInMonths += endDate.getMonth() + 1;
+
+    if (durationInMonths <= 12) {
+        dateElement.textContent = startDateText + ' - ' + endDateText + ' (' + durationInMonths + ' month' + (durationInMonths === 1 ? '' : 's') + ')';
+    } else {
+        var years = Math.floor(durationInMonths / 12);
+        var months = durationInMonths % 12;
+        dateElement.textContent = startDateText + ' - ' + endDateText + ' (' + years + ' year' + (years === 1 ? '' : 's');
+        if (months > 0) {
+            dateElement.textContent += ' and ' + months + ' month' + (months === 1 ? '' : 's');
+        }
+        dateElement.textContent += ')';
+    }
 });
 
 //Copyright Year
