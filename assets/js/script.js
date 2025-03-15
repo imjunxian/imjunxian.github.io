@@ -133,22 +133,24 @@ dateElements.forEach(function(dateElement) {
     var startDate = new Date(startDateText);
     var endDate = endDateText === 'Present' ? new Date() : new Date(endDateText);
 
-    var durationInMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12;
-    durationInMonths -= startDate.getMonth() + 1;
-    durationInMonths += endDate.getMonth() + 1;
+    // LinkedIn-style month calculation: Include both start and end months fully
+    var durationInMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 
+                           + (endDate.getMonth() - startDate.getMonth()) 
+                           + 1; // Add 1 to count both start & end month
 
     if (durationInMonths <= 12) {
-        dateElement.textContent = startDateText + ' - ' + endDateText + ' (' + durationInMonths + ' month' + (durationInMonths === 1 ? '' : 's') + ')';
+        dateElement.textContent = `${startDateText} - ${endDateText} (${durationInMonths} mo${durationInMonths === 1 ? '' : 's'})`;
     } else {
         var years = Math.floor(durationInMonths / 12);
         var months = durationInMonths % 12;
-        dateElement.textContent = startDateText + ' - ' + endDateText + ' (' + years + ' year' + (years === 1 ? '' : 's');
+        dateElement.textContent = `${startDateText} - ${endDateText} (${years} yr${years === 1 ? '' : 's'}`;
         if (months > 0) {
-            dateElement.textContent += ' and ' + months + ' month' + (months === 1 ? '' : 's');
+            dateElement.textContent += ` ${months} mo${months === 1 ? '' : 's'}`;
         }
         dateElement.textContent += ')';
     }
 });
+
 
 //Copyright Year
 document.querySelector('#copyright-year').innerText = new Date().getFullYear();
