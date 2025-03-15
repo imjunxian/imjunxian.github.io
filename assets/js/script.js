@@ -123,20 +123,39 @@ $(document).ready(function () {
     });
 });
 
-// Duration in experience & education
+// Helper function to parse dates in "MMM YYYY" format
+function parseDate(dateText) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let parts = dateText.split(" ");
+    
+    if (parts.length < 2) return null; // Invalid format
+    let monthIndex = months.indexOf(parts[0]); // Convert month name to index
+    let year = parseInt(parts[1], 10);
+
+    if (monthIndex === -1 || isNaN(year)) return null; // Invalid month/year
+    return new Date(year, monthIndex, 1); // Return first day of the month
+}
+
 var dateElements = document.querySelectorAll('.dateText');
 
 dateElements.forEach(function(dateElement) {
     var dateRange = dateElement.textContent.split('-');
     var startDateText = dateRange[0].trim();
     var endDateText = dateRange[1] ? dateRange[1].trim() : 'Present';
-    var startDate = new Date(startDateText);
-    var endDate = endDateText === 'Present' ? new Date() : new Date(endDateText);
+    
+    var startDate = parseDate(startDateText);
+    var endDate = endDateText === 'Present' ? new Date() : parseDate(endDateText);
 
-    // LinkedIn-style month calculation: Include both start and end months fully
+    if (!startDate || !endDate) {
+        console.warn("Invalid date format:", dateElement.textContent);
+        return;
+    }
+
+    // LinkedIn-style duration calculation
     var durationInMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 
                            + (endDate.getMonth() - startDate.getMonth()) 
-                           + 1; // Add 1 to count both start & end month
+                           + 1; // Add 1 to include both start & end month
 
     if (durationInMonths <= 12) {
         dateElement.textContent = `${startDateText} - ${endDateText} (${durationInMonths} mo${durationInMonths === 1 ? '' : 's'})`;
@@ -150,6 +169,7 @@ dateElements.forEach(function(dateElement) {
         dateElement.textContent += ')';
     }
 });
+
 
 
 //Copyright Year
