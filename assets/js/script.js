@@ -123,51 +123,52 @@ $(document).ready(function () {
     });
 });
 
-// Helper function to parse dates in "MMM YYYY" format
+// Helper function to parse dates reliably
 function parseDate(dateText) {
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let parts = dateText.split(" ");
+    const months = {
+        "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3, "May": 4, "Jun": 5,
+        "Jul": 6, "Aug": 7, "Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11
+    };
+
+    let parts = dateText.trim().split(/\s+/); // Split by space (handles extra spaces)
     
-    if (parts.length < 2) return null; // Invalid format
-    let monthIndex = months.indexOf(parts[0]); // Convert month name to index
+    if (parts.length !== 2) return null; // Ensure "MMM YYYY" format
+
+    let monthIndex = months[parts[0]];
     let year = parseInt(parts[1], 10);
 
-    if (monthIndex === -1 || isNaN(year)) return null; // Invalid month/year
-    return new Date(year, monthIndex, 1); // Return first day of the month
+    if (monthIndex === undefined || isNaN(year)) return null; // Invalid date
+
+    return new Date(year, monthIndex, 1); // Return the first day of the month
 }
 
-var dateElements = document.querySelectorAll('.dateText');
+// Process all date elements
+document.querySelectorAll('.dateText').forEach(function(dateElement) {
+    let dateRange = dateElement.textContent.split('-').map(d => d.trim());
+    let startDateText = dateRange[0];
+    let endDateText = dateRange[1] || 'Present';
 
-dateElements.forEach(function(dateElement) {
-    var dateRange = dateElement.textContent.split('-');
-    var startDateText = dateRange[0].trim();
-    var endDateText = dateRange[1] ? dateRange[1].trim() : 'Present';
-    
-    var startDate = parseDate(startDateText);
-    var endDate = endDateText === 'Present' ? new Date() : parseDate(endDateText);
+    let startDate = parseDate(startDateText);
+    let endDate = endDateText === 'Present' ? new Date() : parseDate(endDateText);
 
     if (!startDate || !endDate) {
-        console.warn("Invalid date format:", dateElement.textContent);
+        console.warn("Invalid date format detected:", dateElement.textContent);
         return;
     }
 
-    // LinkedIn-style duration calculation
-    var durationInMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 
-                           + (endDate.getMonth() - startDate.getMonth()) 
-                           + 1; // Add 1 to include both start & end month
+    // Linkedin style duration calculation
+    let durationInMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12
+                         + (endDate.getMonth() - startDate.getMonth())
+                         + 1; // Include both start & end months
 
-    if (durationInMonths <= 12) {
-        dateElement.textContent = `${startDateText} - ${endDateText} (${durationInMonths} mo${durationInMonths === 1 ? '' : 's'})`;
-    } else {
-        var years = Math.floor(durationInMonths / 12);
-        var months = durationInMonths % 12;
-        dateElement.textContent = `${startDateText} - ${endDateText} (${years} yr${years === 1 ? '' : 's'}`;
-        if (months > 0) {
-            dateElement.textContent += ` ${months} mo${months === 1 ? '' : 's'}`;
-        }
-        dateElement.textContent += ')';
-    }
+    // Format the duration text
+    let durationText = durationInMonths <= 12 
+        ? `${durationInMonths} mo${durationInMonths === 1 ? '' : 's'}`
+        : `${Math.floor(durationInMonths / 12)} yr${Math.floor(durationInMonths / 12) === 1 ? '' : 's'}`
+            + (durationInMonths % 12 > 0 ? ` ${durationInMonths % 12} mo` : '');
+
+    // Update the element with the LinkedIn-style duration
+    dateElement.textContent = `${startDateText} - ${endDateText} (${durationText})`;
 });
 
 
