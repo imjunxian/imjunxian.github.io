@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">WAFER OPTIMIZATION project placeholder</title>
+  <desc id="desc">Generic illustration. Company project screenshots are confidential.</desc>
+  <rect width="1200" height="700" fill="#edf2f7"/>
+  <rect x="40" y="40" width="1120" height="620" rx="24" fill="#fff"/>
+  <g fill="none" stroke="#466581" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="600" cy="255" r="90"/><path d="M540 189V321M580 169V341M620 169V341M660 189V321M514 215H686M510 255H690M514 295H686"/></g>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" font-weight="700" fill="#263b50">WAFER OPTIMIZATION</text>
+  <text x="600" y="488" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" fill="#657585">Company project · Confidential</text>
+  <text x="600" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" fill="#657585">Placeholder illustration</text>
+</svg>

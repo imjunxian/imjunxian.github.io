@@ -317,6 +317,13 @@ main.hero-wrap {
 }
 
 /*portfolio card*/
+#portfolio .portfolio-card .card-img-top {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: contain;
+  background-color: #edf2f7;
+}
+
 .card {
   transition: all 0.2s ease;
   cursor: pointer;

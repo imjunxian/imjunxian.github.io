@@ -1,3 +1,18 @@
+// // Dark / Day Theme Toggle (Test)
+// const toggleBtn = document.getElementById('theme-toggle');
+//   const currentTheme = localStorage.getItem('theme') || 'light';
+
+//   document.documentElement.setAttribute('data-theme', currentTheme);
+
+//   toggleBtn.textContent = currentTheme === 'dark' ? '🌙' : '🌞';
+
+//   toggleBtn.addEventListener('click', () => {
+//     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+//     document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+//     localStorage.setItem('theme', isDark ? 'light' : 'dark');
+//     toggleBtn.textContent = isDark ? '🌞' : '🌙';
+// });
+
 //Scrolling Nav auto hover
 $("body").scrollspy({
     target: "#navBar-main",
@@ -170,7 +185,6 @@ document.querySelectorAll('.dateText').forEach(function(dateElement) {
     // Update the element with the LinkedIn-style duration
     dateElement.textContent = `${startDateText} - ${endDateText} (${durationText})`;
 });
-
 
 
 //Copyright Year
