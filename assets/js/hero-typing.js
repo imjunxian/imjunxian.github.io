@@ -1,57 +1,70 @@
 (() => {
-  const lines = [...document.querySelectorAll('h1 .type-line')];
-  if (lines.length !== 2) return;
-  const phrases = ['Lee Jun\nXian.', 'a.k.a.\nJax.'];
+  const headline = document.querySelector('.code-headline');
+  if (!headline) return;
+  const lines = [...headline.querySelectorAll('.type-line')];
+  const tokens = [
+    [['def','keyword'],[' ','plain'],['Lee_Jun_Xian','function'],['():','plain']],
+    [['return','return'],[' ','plain'],['"a.k.a. JaX."','string']]
+  ];
+  const text = tokens.map(row=>row.map(([value])=>value).join('')).join('\n');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let timer, blinkTimer, phrase = 0, position = 0, deleting = false, caret = true;
-  const paused = () => document.hidden || (window.portfolioProgress || 0) > .015;
+  let frameId=0, position=0, lastStep=0, caretTime=0, running=false, ready=false;
   const notify = () => window.dispatchEvent(new Event('hero-type'));
-  function render() {
-    const text = phrases[phrase].slice(0,position);
-    const parts = text.split('\n');
-    lines.forEach((line,index) => {
-      line.textContent = parts[index] || '';
-      line.dataset.caret = String(caret && index === (parts.length > 1 ? 1 : 0));
+  function render(position,caret=false) {
+    const typed=text.slice(0,position).split('\n');
+    lines.forEach((line,index)=>{
+      let remaining=(typed[index]||'').length;
+      const fragment=document.createDocumentFragment();
+      tokens[index].forEach(([value,kind])=>{
+        const shown=value.slice(0,Math.max(0,remaining));remaining-=value.length;
+        if(!shown)return;
+        const token=document.createElement('span');
+        token.className='code-token';token.dataset.syntaxKey=kind;
+        token.style.setProperty('--syntax-color',`var(--syntax-${kind})`);token.textContent=shown;
+        fragment.append(token);
+      });
+      line.replaceChildren(fragment);
+      line.dataset.caret=String(caret&&index===(typed.length>1?1:0));
     });
     notify();
   }
-  function tick() {
-    if (paused()) { timer = setTimeout(tick,200); return; }
-    caret = true;
-    position += deleting ? -1 : 1;
-    render();
-    if (!deleting && position === phrases[phrase].length) {
-      deleting = true;
-      timer = setTimeout(tick,2600);
-    } else if (deleting && position === 0) {
-      deleting = false;
-      phrase = (phrase + 1) % phrases.length;
-      timer = setTimeout(tick,400);
-    } else {
-      const character = phrases[phrase][position-1];
-      timer = setTimeout(tick,deleting ? 55 : /[.\n]/.test(character) ? 170 : 110);
-    }
-  }
-  function configure() {
-    clearTimeout(timer);
-    clearInterval(blinkTimer);
-    if (reducedMotion.matches) {
-      lines[0].textContent = 'Lee Jun';
-      lines[1].textContent = 'Xian.';
-      lines.forEach(line=>delete line.dataset.caret);
-      notify();
-      return;
-    }
-    phrase = 0; position = 0; deleting = false; caret = true;
-    timer = setTimeout(() => { render(); tick(); },700);
-    blinkTimer = setInterval(() => {
-      if (!paused() && deleting && position === phrases[phrase].length) {
-        caret = !caret;
-        render();
+  function tick(now) {
+    if(!running)return;
+    if(!lastStep)lastStep=now;
+    if(position<text.length){
+      const delay=text[position]==='\n'?240:60;
+      if(now-lastStep>=delay){
+        position++;lastStep=now;caretTime=now;
+        render(position,true);
+        if(position===text.length)headline.dataset.state='complete';
       }
-    },500);
+    }else{
+      const caret=Math.floor((now-caretTime)/500)%2===0;
+      if(lines[1].dataset.caret!==String(caret))render(position,caret);
+    }
+    frameId=requestAnimationFrame(tick);
   }
-  document.fonts.ready.then(configure);
-  reducedMotion.addEventListener('change',configure);
-  window.addEventListener('pagehide',()=>{clearTimeout(timer);clearInterval(blinkTimer)},{once:true});
+  function start() {
+    if(ready)return;
+    ready=true;
+    if(reducedMotion.matches){position=text.length;render(position,true);headline.dataset.state='complete';return}
+    headline.dataset.state='typing';running=true;position=1;
+    render(position,true);
+    frameId=requestAnimationFrame(tick);
+  }
+  // One animation clock owns the text. Rendering, fonts, scrolling and themes never reset it.
+  render(0,true);
+  const fallback=setTimeout(start,1000);
+  window.addEventListener('hero-render-ready',()=>{clearTimeout(fallback);start()},{once:true});
+  if(reducedMotion.matches)start();
+  reducedMotion.addEventListener('change',()=>{
+    if(!reducedMotion.matches)return;
+    cancelAnimationFrame(frameId);running=false;ready=true;position=text.length;
+    render(position,true);headline.dataset.state='complete';
+  });
+  window.addEventListener('portfolio-theme',notify);
+  window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);running=false});
+  window.addEventListener('pageshow',()=>{
+    if(ready&&!running&&!reducedMotion.matches){running=true;lastStep=0;frameId=requestAnimationFrame(tick)}
+  });
 })();

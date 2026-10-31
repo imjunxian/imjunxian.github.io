@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#050507">
+  <meta name="theme-color" content="#f4f3ee">
+  <script>try{const theme=localStorage.getItem("portfolio-theme");if(theme==="dark"||theme==="light")document.documentElement.dataset.theme=theme}catch{}document.querySelector('meta[name="theme-color"]').content=document.documentElement.dataset.theme==="dark"?"#050507":"#f4f3ee";</script>
   <meta name="description" content="Lee Jun Xian — AI, software and data engineer in Penang, Malaysia. Explore my work, experience, research and creative projects.">
   <title>Lee Jun Xian</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LBW99HXB74"></script>
@@ -16,18 +17,18 @@
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 </head>
 <body>
+  <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Use dark theme"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
   <canvas id="glass" aria-hidden="true"></canvas>
   <main id="home" aria-label="Introduction">
     <div class="hero-stage">
     <div id="slab">
       <nav class="nav-slab" aria-label="Main navigation">
-        <a class="brand" href="#home" aria-label="Lee Jun Xian home"><img class="brand-mark" src="assets/img/icon.ico" alt="" width="26" height="26"><span data-print>Lee_Jun_Xian()</span></a>
-        <div class="nav-links"><a href="#work" data-view="work" data-print>Works</a><a href="#resume" data-view="resume" data-print>Résumé</a><a href="#about" data-view="about" data-print>About</a></div>
-        <a class="nav-contact" href="#contact" data-view="contact" data-print>Let’s talk <span>↗</span></a>
+        <a class="brand" href="#home" aria-label="Lee Jun Xian home"><svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" viewBox="4 29 610 285" width="56" height="29" fill="currentColor" aria-hidden="true" focusable="false"><path d="M175 29H395L223 310H4L41 249H187L283 92H137Z"/><path d="M425 37L480 126L537 31H614L519 187L597 314H521L480 247L441 314H366L442 186L426 161L333 313H257Z"/></svg></a>
+        <div class="nav-links"><a href="#about" data-view="about" data-print>About</a><a href="#resume" data-view="resume" data-print>Resume</a><a href="#work" data-view="work" data-print>Work</a><a href="#contact" data-view="contact" data-print>Contact</a></div>
       </nav>
       <section class="hero-panel">
         <p class="eyebrow" data-print>What's Up</p>
-        <h1 aria-label="Lee Jun Xian, also known as Jax."><span class="type-line" data-print aria-hidden="true">Lee Jun</span><span class="type-line" data-print aria-hidden="true">Xian.</span></h1>
+        <h1 class="code-headline" aria-label="Lee Jun Xian, also known as JaX."><span class="type-line" data-print aria-hidden="true"><span class="code-token" data-syntax-key="keyword" style="--syntax-color:var(--syntax-keyword)">def</span><span class="code-token" data-syntax-key="plain" style="--syntax-color:var(--syntax-plain)"> </span><span class="code-token" data-syntax-key="function" style="--syntax-color:var(--syntax-function)">Lee_Jun_Xian</span><span class="code-token" data-syntax-key="plain" style="--syntax-color:var(--syntax-plain)">():</span></span><span class="type-line" data-print aria-hidden="true"><span class="code-token" data-syntax-key="return" style="--syntax-color:var(--syntax-return)">return</span><span class="code-token" data-syntax-key="plain" style="--syntax-color:var(--syntax-plain)"> </span><span class="code-token" data-syntax-key="string" style="--syntax-color:var(--syntax-string)">&quot;a.k.a. JaX.&quot;</span></span></h1>
         <p class="intro"><span data-print>Engineer | AI · Software · Data</span><span data-print></span></p>
         <div class="hero-actions"><a class="primary" href="#work" data-view="work" data-print>Explore my work <span>↗</span></a><a class="text-link" href="#about" data-view="about" data-print>A little about me <span>→</span></a></div>
         <div class="coordinates"><span class="tiny-cross"></span><span data-print>MALAYSIA</span><span class="location-dot"></span></div>
@@ -35,17 +36,18 @@
         <p class="panel-footer right" data-print>"One day, you'll leave this world behind, so live a life you will remember." <br> [ Lyrics from Avicii - The Nights ]</p>
       </section>
     </div>
-    <div class="outside-caption"><span>PERSONAL PORTFOLIO / <span class="year">2026</span></span><span>SCROLL TO EXPLORE <span class="caption-cross">↓</span></span></div>
+    <div class="outside-caption"><span>imjunxian.github.io / <span class="year">2026</span></span><span>SCROLL TO EXPLORE <span class="caption-cross">↓</span></span></div>
     </div>
   </main>
   <section id="detail" aria-label="Portfolio details">
     <button class="back-sliver" type="button">← Back</button>
     <div class="detail-shell">
-      <nav class="detail-nav" aria-label="Portfolio sections"><a href="#work" data-view="work">Works</a><a href="#resume" data-view="resume">Résumé</a><a href="#about" data-view="about">About</a><a href="#contact" data-view="contact">Contact</a></nav>
+      <nav class="detail-nav" aria-label="Portfolio sections"><a href="#about" data-view="about">About</a><a href="#resume" data-view="resume">Resume</a><a href="#work" data-view="work">Work</a><a href="#contact" data-view="contact">Contact</a></nav>
       <div id="detail-content" tabindex="-1"></div>
       <footer> <a href="#home">Back to the surface ↑</a></footer>
     </div>
   </section>
+  <script src="assets/js/theme.js"></script>
   <script src="assets/js/portfolio.js"></script>
   <script src="assets/js/hero-typing.js"></script>
   <script type="module" src="assets/js/glass.js"></script>
