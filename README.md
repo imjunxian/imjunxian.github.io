@@ -1,4 +1,4 @@
-# Lee Jun Xian — Portfolio
+# imjunxian.github.io
 
 A buildless portfolio made with HTML, CSS and JavaScript, inspired by the Motionsites “Designed in glass” prompt. The smoked-glass hero uses Three.js 0.169.0, code-drawn text textures, extruded shards, cursor lighting and a scroll-driven shatter/reassembly transition.
 
