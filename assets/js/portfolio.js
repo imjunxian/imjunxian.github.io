@@ -25,7 +25,7 @@
         <a class="gallery-image-link" href="assets/img/portfolio/${path}" target="_blank" rel="noopener noreferrer" aria-label="Open ${project[0]}: ${caption} at full size"><img src="assets/img/portfolio/${path}" alt="${project[0]} — ${caption}" loading="lazy" decoding="async" width="1200" height="700"></a>
         <figcaption>${caption}</figcaption>
       </figure>`).join('')}</div>
-      ${images.length>1?`<div class="gallery-controls"><button type="button" class="gallery-arrow" data-direction="-1" aria-label="Previous image">←</button><div class="gallery-pagination"><div class="gallery-dots" role="group" aria-label="Choose an image">${images.map((image,slide)=>`<button type="button" class="gallery-dot" data-slide="${slide}" aria-label="Show image ${slide+1}: ${image[1]}" aria-current="${slide===0}"></button>`).join('')}</div><span class="gallery-status" aria-live="polite" aria-atomic="true">1 / ${images.length}</span></div><button type="button" class="gallery-arrow" data-direction="1" aria-label="Next image">→</button></div>`:''}
+      ${images.length>1?`<div class="gallery-controls"><button type="button" class="gallery-arrow" data-direction="-1" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button><div class="gallery-pagination"><div class="gallery-dots" role="group" aria-label="Choose an image">${images.map((image,slide)=>`<button type="button" class="gallery-dot" data-slide="${slide}" aria-label="Show image ${slide+1}: ${image[1]}" aria-current="${slide===0}"></button>`).join('')}</div><span class="gallery-status" aria-live="polite" aria-atomic="true">1 / ${images.length}</span></div><button type="button" class="gallery-arrow" data-direction="1" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div>`:'<div class="gallery-single"><span>PROJECT PREVIEW</span><span>01 / 01</span></div>'}
     </section>`;
   }
   function showSlide(carousel,index) {
@@ -46,7 +46,7 @@
   };
   const contactLabel = (icon,label) => `<span class="contact-label"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${contactIcons[icon]}</svg><span>${label}</span></span>`;
   const views = {
-    work: `<p class="section-kicker">03 / Selected work</p><h2>Intelligence, put to work.</h2><p class="lede">From manufacturing analytics to web applications. A selection of things I’ve built, and a little of my creative side.</p>${projects.map((p,i)=>`<details class="project"><summary><span class="project-number">0${i+1}</span><div><h3>${p[0]}</h3><p class="category">${p[1]}</p></div><span class="project-arrow">↗</span></summary><div class="project-body"><p>${p[2]}</p>${tags(p[3])}${gallery(p,i)}${p[6]?'<p class="confidential">Company project. Screenshots and source code are confidential.</p>':''}${p[5]?`<a href="${p[5]}" target="_blank" rel="noopener noreferrer">${i===5?'Listen on SoundCloud':'Explore the source'} ↗</a>`:''}</div></details>`).join('')}`,
+    work: `<p class="section-kicker">03 / Selected work</p><h2>Intelligence, put to work.</h2><p class="lede">From manufacturing analytics to web applications, with a little of my creative side.</p>${projects.map((p,i)=>`<details class="project work-card${i>=2&&i<=4?' work-card--interface':''}" aria-labelledby="project-${i}-title"><summary class="work-card-header"><span class="project-number">0${i+1}</span><div><h3 id="project-${i}-title">${p[0]}</h3><p class="category">${p[1]}</p></div><span class="project-toggle-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary><div class="project-body"><div class="work-card-copy"><p class="project-description">${p[2]}</p>${tags(p[3])}${p[6]?'<p class="confidential">Company project · Screenshots and source code are confidential.</p>':''}${p[5]?`<a class="project-source" href="${p[5]}" target="_blank" rel="noopener noreferrer">${i===5?'Listen on SoundCloud':'Explore the source'} ↗</a>`:''}</div>${gallery(p,i)}</div></details>`).join('')}`,
     resume: `<p class="section-kicker">02 / Resume</p><h2>A little context.<br>A lot of curiosity.</h2><p class="lede">My path through AI, software and data engineering.</p><div class="resume-group"><h3>Experience</h3>${entry('Oct 2024 – Present','Automation Development Engineer (AI & Software)','SanDisk (SNDK)','- Transitioned from WDC to SanDisk in February 2025 following the spin-off.<br> - Built AI-powered analytics tools, Databricks ETL pipelines and manufacturing automation.<br> - Co-developed production-planning optimization and integrated it as an agent tool to broader agentic AI platform.','Python · TypeScript · LLM · Databricks · LangGraph · Docker · Kubernetes')}${entry('Oct 2023 – Oct 2024','Engineer, Data Management Engineering','Western Digital (WDC)','- Built manufacturing ETL pipelines and automated workflows. <br> - Developed computer vision inspection systems (UI & post-processing pipelines) and KPI dashboards.','Python · Oracle SQL · FastAPI · Vue.js · .NET C# · Apache Airflow · TIBCO Spotfire')}${entry('Feb 2023 – Jul 2023','Software Engineer (Intern)','Inari Technology Sdn Bhd','','ASP.NET C# · Laravel · Microsoft SQL · MySQL · HTML · CSS · JavaScript')}${entry('Oct 2020 – Dec 2020','Software Developer (Intern)','Operion Ecommerce & Software Sdn Bhd','','PHP · JavaScript · HTML · CSS · Bootstrap')}</div><div class="resume-group"><h3>Education</h3>${entry('Oct 2024 – Sep 2026','Master of Computer Science','Universiti Sains Malaysia (USM)','Research areas: NLP, GenAI, Aspect-Based Sentiment Analysis (ABSA), Multi-Task Learning and Transfer Learning.','Python · Machine Learning · Deep Learning')}${entry('Jun 2021 – Jul 2023','Bachelor of Information Technology (Honours) in Software Systems Development','Tunku Abdul Rahman University of Management and Technology (TARUMT)','','ASP.NET C# · Java · Kotlin · Microsoft SQL · Firebase')}${entry('May 2019 – May 2021','Diploma in Science (Information System Engineering)','Tunku Abdul Rahman University of Management and Technology (TARUMT)','','C · Java · PHP · MySQL · JavaScript')}</div>`,
     about: `<p class="section-kicker">01 / Behind the code</p><h2>Engineer.<br>Curious by nature.</h2><div class="about-copy"><p>I’m <strong>Lee Jun Xian</strong> (a.k.a. JaX), an AI, software and data engineer based in <strong>Penang, Malaysia</strong>.</p><p>My work connects AI-powered analytics, data pipelines and software to real manufacturing challenges. At SanDisk, I build tools for analytics and automation, and co-develop production-planning optimization.</p><p>My Master of Computer Science research at Universiti Sains Malaysia (USM) explores NLP, generative AI, aspect-based sentiment analysis, multi-task learning and transfer learning.</p><p>I started coding in college and keep learning new technologies. Outside engineering, I express myself through design and music. I explore music production with FL Studio and Logic Pro.</p></div>`,
     contact: `<p class="section-kicker">04 / Get in touch</p><h2>Let’s connect.</h2><p class="lede"></p><div class="contact-list"><a href="mailto:junxian010729@gmail.com">${contactLabel('email','Email')}<span>↗</span></a><a href="https://www.linkedin.com/in/imjunxian/" target="_blank" rel="noopener noreferrer">${contactLabel('linkedin','LinkedIn')}<span>↗</span></a><a href="https://github.com/imjunxian" target="_blank" rel="noopener noreferrer">${contactLabel('github','GitHub')}<span>↗</span></a><a href="https://soundcloud.com/c411m3j4x" target="_blank" rel="noopener noreferrer">${contactLabel('soundcloud','SoundCloud')}<span>↗</span></a></div><div class="certificates"><p class="section-kicker">Certifications</p><a href="https://www.credly.com/badges/72c394cc-0284-4eaa-a05f-e836d56a48d1/linked_in_profile" target="_blank" rel="noopener noreferrer">CCNA: Enterprise Networking, Security, and Automation ↗</a><a href="https://www.credly.com/badges/53ec610b-cbba-45de-9875-a5548153e161/linked_in_profile" target="_blank" rel="noopener noreferrer">AWS Academy Cloud Foundations ↗</a><a href="https://www.credly.com/badges/ad1d35de-301d-4d35-aaaf-4497b385c761/linked_in_profile" target="_blank" rel="noopener noreferrer">CCNA: Switching, Routing, and Wireless Essentials ↗</a><a href="https://www.credly.com/badges/2fa15e80-4187-4e76-a92c-752e2525753f/linked_in_profile" target="_blank" rel="noopener noreferrer">CCNA: Introduction to Networks ↗</a><a href="assets/img/cert/cert.jpg" target="_blank" rel="noopener">View certificates ↗</a></div>`
@@ -68,34 +68,76 @@
     showSlide(carousel,next);
   });
   // Every section stays in the document: wheel, touch, keyboard and anchor links
-  // all travel through the same scroll-driven glass transition.
+  // all travel through the same continuous document.
   const sections = ['about','resume','work','contact'];
-  content.innerHTML = sections.map(key=>`<section id="${key}" class="portfolio-section" aria-labelledby="${key}-title" tabindex="-1">${views[key].replace('<h2>',`<h2 id="${key}-title">`)}</section>`).join('');
-  const stage = document.querySelector('.hero-stage');
+  content.innerHTML = sections.map(key=>`<section id="${key}" class="portfolio-section" aria-labelledby="${key}-title" tabindex="-1"><div class="chapter-marker"><span>0${sections.indexOf(key)+1}</span><span>${{about:'THE PERSON',resume:'THE JOURNEY',work:'THE OUTPUT',contact:'THE NEXT CHAPTER'}[key]}</span><span class="chapter-cross">+</span></div><div class="section-watermark" data-depth="0.09" aria-hidden="true">${{about:'Curiosity.',resume:'Forward.',work:'Selected.',contact:'Hello World.'}[key]}</div><div class="section-content">${views[key].replace('<h2>',`<h2 id="${key}-title">`)}</div></section>`).join('');
+  // Native sticky positioning holds the chapter while the document carries its
+  // content past it. There is no nested scroll area or wheel interception.
+  for(const key of ['work']) {
+    const section = document.getElementById(key);
+    section.classList.add('pinned-chapter', 'vertical-work');
+    const source = section.querySelector('.section-content');
+    const layout = document.createElement('div');
+    layout.className = 'pin-layout';
+    const heading = document.createElement('div');
+    heading.className = 'pin-heading';
+    heading.append(section.querySelector('.chapter-marker'));
+    for(const element of [...source.children]) {
+      if(element.matches('.section-kicker,h2,.lede')) heading.append(element);
+    }
+    const watermark = section.querySelector('.section-watermark');
+    watermark.removeAttribute('data-depth');
+    heading.append(watermark);
+    const cue = document.createElement('p');
+    cue.className = 'pin-cue';
+    cue.setAttribute('aria-hidden','true');
+    cue.innerHTML = '<span>KEEP EXPLORING</span><span>↓</span>';
+    heading.append(cue);
+    const stream = document.createElement('div');
+    stream.className = 'pin-stream';
+    stream.append(...source.children);
+    layout.append(heading,stream);
+    source.replaceWith(layout);
+  }
+  // All collapsed summaries share the same height, including wrapped titles.
+  const workSection = document.getElementById('work');
+  const workCards = [...workSection.querySelectorAll('.work-card')];
+  function sizeWorkCards() {
+    workSection.style.removeProperty('--project-summary-height');
+    const height = Math.max(...workCards.map(card => card.querySelector('summary').offsetHeight));
+    workSection.style.setProperty('--project-summary-height', `${height}px`);
+  }
+  const workSizing = new ResizeObserver(sizeWorkCards);
+  workSizing.observe(workSection.querySelector('.pin-stream'));
+  workSection.addEventListener('toggle',sizeWorkCards,true);
+  document.fonts.ready.then(sizeWorkCards);
+  sizeWorkCards();
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const layers = [...document.querySelectorAll('[data-depth]')];
   let queued = false;
   let currentSection = '';
   function updateScroll() {
     queued = false;
-    const travel = Math.max(1,home.offsetHeight-stage.offsetHeight);
-    const progress = Math.min(1,Math.max(0,window.scrollY/travel));
-    window.portfolioProgress = progress;
-    window.dispatchEvent(new CustomEvent('portfolio-scroll',{detail:{progress}}));
-    document.body.classList.toggle('past-hero',progress>.96);
-    stage.inert = progress>.15;
-    stage.style.setProperty('--hero-dom-opacity',window.glassReady && progress>.015 ? 0 : Math.max(0,1-progress*2));
-    stage.style.setProperty('--caption-opacity',Math.max(0,1-progress*3));
+    const progress = Math.min(1, Math.max(0, scrollY / home.offsetHeight));
+    document.documentElement.style.setProperty('--scroll-progress', scrollY / Math.max(1,document.documentElement.scrollHeight-innerHeight));
+    document.body.classList.toggle('past-hero', scrollY > 80);
+    for(const layer of layers) {
+      const section = layer.closest('.portfolio-section, #home');
+      const rect = section.getBoundingClientRect();
+      // Move only decorative layers; native scrolling and readable content keep their own pace.
+      const limit = section===home ? Math.max(0,home.offsetHeight-home.querySelector('.hero-stage').offsetHeight) : innerHeight;
+      const distance = Math.max(-innerHeight, Math.min(limit, -rect.top));
+      layer.style.setProperty('--parallax-y', reducedMotion.matches ? '0px' : `${distance * Number(layer.dataset.depth)}px`);
+    }
+    document.documentElement.style.setProperty('--orbit-turn', reducedMotion.matches ? '0deg' : `${progress * 55}deg`);
     let active = '';
-    if(progress>.8) {
-      active = sections[0];
-      for(const key of sections) {
-        if(document.getElementById(key).getBoundingClientRect().top < innerHeight*.4) active=key;
-      }
+    for(const key of sections) {
+      if(document.getElementById(key).getBoundingClientRect().top < innerHeight*.45) active=key;
     }
     if(active!==currentSection) {
       currentSection=active;
-      document.querySelectorAll('.detail-nav a').forEach(a=>{
-        if(a.dataset.view===active) a.setAttribute('aria-current','page');
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        if(a.dataset.view===active) a.setAttribute('aria-current','location');
         else a.removeAttribute('aria-current');
       });
       document.title=active ? `${active==='resume'?'Resume':active[0].toUpperCase()+active.slice(1)} — Lee Jun Xian` : 'Lee Jun Xian';
@@ -107,7 +149,7 @@
   function goTo(key,smooth=true,focus=false) {
     const target=document.getElementById(key==='home'?'home':key);
     if(!target || !['home',...sections].includes(key)) return;
-    const top=key==='home'?0:target.getBoundingClientRect().top+scrollY-75;
+    const top=key==='home'?0:target.getBoundingClientRect().top+scrollY-(innerWidth<=700?92:112);
     window.scrollTo({top,behavior:smooth&&!reducedMotion.matches?'smooth':'instant'});
     if(focus && key!=='home')target.focus({preventScroll:true});
   }
@@ -121,16 +163,14 @@
     goTo(key,true,true);
   });
   document.querySelectorAll('.year').forEach(el=>el.textContent=new Date().getFullYear());
-  document.querySelector('.back-sliver').addEventListener('click',()=>{
-    history.pushState(null,'','#home');goTo('home');
-  });
   window.addEventListener('hashchange',()=>goTo(location.hash.slice(1)||'home'));
   window.addEventListener('scroll',queueScroll,{passive:true});
   window.addEventListener('resize',queueScroll);
+  reducedMotion.addEventListener('change',queueScroll);
   window.addEventListener('keydown',event=>{
     if(event.key==='Escape'&&window.scrollY>0)goTo('home');
   });
   updateScroll();
   const initialKey=location.hash.slice(1);
-  if(initialKey && initialKey!=='home') document.fonts.ready.then(()=>goTo(initialKey,false));
+  if(initialKey && initialKey!=='home') document.fonts.ready.then(()=>requestAnimationFrame(()=>goTo(initialKey,false)));
 })();
